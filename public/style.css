@@ -1,0 +1,149 @@
+body {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-color:white;
+    font-size:larger;
+    margin:20px;
+    padding:0;
+    background-color:pink;
+    background-size:cover;
+  
+}
+.logo{
+    width:100px;
+    height:100px;
+}
+.background-image {
+  width:100vw;
+  height:100vh;
+  object-fit:contain;
+  z-index: -1;
+  position:fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5;
+}
+form {
+  text-align: left;
+    background: rgba(2, 210, 225, 0.424);
+    padding: 20px;
+    max-width: 750px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(155, 5, 169, 0.653);
+}
+
+input, button {
+    display: block;
+    margin-bottom: 20px;
+    width:710px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-content {
+    background-color: rgb(23, 199, 93);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    max-width: 400px;
+    width: 90%;
+    animation: slideIn 0.3s ease-out;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+.checkmark {
+    font-size: 48px;
+    color: #4CAF50;
+    margin: 20px 0;
+    animation: scaleIn 0.5s ease-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Button Styles */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Input Styles */
+input {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+  

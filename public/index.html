@@ -1,0 +1,94 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Traveler's Den</title>
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+<body>
+  <img src="background.jpg" width="100%" height="100%" alt="Hotel Background" class="background-image">
+  <center>
+    <br>
+    <!--<img src="hotel-logo.png" alt="Hotel Logo" class="logo">-->
+    <h1>Traveler's Den</h1>
+  <br>
+  <h2>Welcome to the Traveler's Den, your home away from home. </h2>
+   <p> Please fill out the form below to check in.</p>
+  <form id="checkin-form" method="POST" action="/checkin">
+    <label for="name">Full Name</label>
+    <input type="text" name="name" placeholder="Full Name" required />
+    <label for="email">Email</label>
+    <input type="email" name="email" placeholder="Email" required />
+    <label for="phone">Phone Number</label>
+    <input type="text" name="phone" placeholder="Phone Number" required />
+    <label for="roomType">Room Type</label>
+    <input type="text" name="roomType" placeholder="Room Type" required />
+    <label for="noOfBeds">Number of Beds</label>
+    <input type="number" name="noOfBeds" placeholder="Number of Beds" required />
+    <label for="checkinDate">Check In Date</label>
+    <input type="date" name="checkinDate" required />
+    <label for="checkoutDate">Check Out Date</label>
+    <input type="date" name="checkoutDate" required />
+    <button type="submit">Check In</button>
+  </form>
+  </center>
+
+  <!-- Popup Dialog -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn">&times;</span>
+      <h2>Check-in Successful!</h2>
+      <p>Welcome to Traveler's Den</p>
+      <div class="checkmark">✓</div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('checkin-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        roomType: form.roomType.value,
+        noOfBeds: form.noOfBeds.value,
+        checkinDate: form.checkinDate.value
+      };
+
+      try {
+        const response = await fetch('/checkin', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          document.getElementById('popup').style.display = 'flex';
+          form.reset();
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+
+    // Close popup when clicking the close button
+    document.querySelector('.close-btn').addEventListener('click', () => {
+      document.getElementById('popup').style.display = 'none';
+    });
+
+    // Close popup when clicking outside
+    window.addEventListener('click', (e) => {
+      const popup = document.getElementById('popup');
+      if (e.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
